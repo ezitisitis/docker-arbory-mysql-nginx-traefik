@@ -63,9 +63,9 @@ services:
     command: /bin/bash -c "envsubst '$$PROJECT_CODE' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;' || cat /etc/nginx/nginx.conf"
     volumes:
       - ./setup/nginx/default.template:/etc/nginx/conf.d/default.template
-      - ./htdocs/public:/app/public
+      - ./data/htdocs/public:/app/public
       - ./data/logs:/var/log/nginx
-      - ./htdocs/storage:/app/storage
+      - ./data/htdocs/storage:/app/storage
     depends_on:
       - app
     env_file: .env
